@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2020_09_05_025005) do
     t.string "username"
     t.string "password_digest"
     t.integer "balance"
-    t.integer "winstreak", default: 0
+    t.integer "winstreak"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
