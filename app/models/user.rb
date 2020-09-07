@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   has_secure_password
   after_initialize :default_values
+  validates :username, presence: true
+  validates :username, uniqueness: true
 
   private 
 
