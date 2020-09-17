@@ -1,7 +1,11 @@
 class GamesController < ApplicationController
   def create
-    #find the user
-    #build a game with that user associated
+    game = current_user.games.build(game_params)
+    if game.save
+      render json: {user: UserSerializer.new(game.user), jwt: token}, status: :accepted
+    else
+      render json: {message: "Uh oh. That game didn't save."}, status: :not_acceptable
+    end
     #custom method to update user balance based on payout
   end
 
