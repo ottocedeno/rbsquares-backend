@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
+  has_many :games
   after_initialize :default_values
   validates :username, presence: true
   validates :username, uniqueness: true
