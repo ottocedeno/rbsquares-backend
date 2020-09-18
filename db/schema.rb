@@ -15,8 +15,8 @@ ActiveRecord::Schema.define(version: 2020_09_17_010900) do
   create_table "games", force: :cascade do |t|
     t.integer "user_id"
     t.integer "bet_amount"
-    t.boolean "matching_square?"
-    t.boolean "matching_color?"
+    t.boolean "matching_square"
+    t.boolean "matching_color"
     t.integer "payout"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
