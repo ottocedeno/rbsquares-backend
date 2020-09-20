@@ -1,12 +1,16 @@
 class Game < ApplicationRecord
   belongs_to :user
-  before_save :update_user_balance
   validates :bet_amount, presence: true
-  validates :matching_square?, presence: true
-  validates :matching_color?, presence: true
+  validates :matching_square, inclusion: { in: [ true, false ] }
+  validates :matching_color, inclusion: { in: [ true, false ] }
   validates :payout, presence: true
 
   def update_user_balance
-    user.balance += payout if payout > 0
+    if payout > 0
+      user.balance += payout
+    else
+      user.balance -= bet_amount
+    end
+    user.save
   end
 end

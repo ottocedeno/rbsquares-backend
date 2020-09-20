@@ -1,11 +1,12 @@
 class GamesController < ApplicationController
   def create
-    # game = current_user.games.build(game_params)
-    # if game.valid?
-    #   render json: {user: UserSerializer.new(game.user), jwt: token}, status: :accepted
-    # else
-    #   render json: {message: "Uh oh. That game didn't save."}, status: :not_acceptable
-    # end
+    game = current_user.games.build(game_params)
+    if game.save
+      game.update_user_balance
+      # render json: {user: UserSerializer.new(game.user), jwt: token}, status: :accepted
+    else
+      render json: {message: "Uh oh. That game didn't save."}, status: :not_acceptable
+    end
   end
 
   def game_params
