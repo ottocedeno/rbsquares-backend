@@ -3,7 +3,7 @@ class GamesController < ApplicationController
     game = current_user.games.build(game_params)
     if game.save
       game.update_user_balance
-      # render json: {user: UserSerializer.new(game.user), jwt: token}, status: :accepted
+      render json: {user: UserSerializer.new(game.user)}, status: :accepted
     else
       render json: {message: "Uh oh. That game didn't save."}, status: :not_acceptable
     end
