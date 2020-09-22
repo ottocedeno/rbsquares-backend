@@ -12,7 +12,7 @@ class User < ApplicationRecord
   private 
 
   def default_values
-    self.balance = 1200
+    self.balance = 500
     self.winstreak = 0
   end
 end

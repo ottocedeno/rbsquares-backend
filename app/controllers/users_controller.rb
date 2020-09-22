@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
   skip_before_action :authorized, only: [:create]
 
+  def index
+    users = User.sort_by_balance
+    render json: {users: UserSerializer.new(users)}, status: :ok
+  end
+
   def create
     user = User.create(user_params)
     
