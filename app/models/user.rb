@@ -5,6 +5,10 @@ class User < ApplicationRecord
   validates :username, presence: true
   validates :username, uniqueness: true
 
+  def self.sort_by_balance
+    User.order('balance DESC')
+  end
+
   private 
 
   def default_values
